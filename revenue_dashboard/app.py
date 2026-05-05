@@ -362,12 +362,19 @@ for tenant in selected_tenants:
     ))
 
 fig.update_layout(
-    **PLOTLY_LAYOUT,
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+    font=dict(family="Syne, sans-serif", color="#8892b0", size=12),
+    yaxis=dict(gridcolor="#1a2035", linecolor="#1e2540", tickcolor="#1e2540", tickprefix="$"),
+    legend=dict(bgcolor="rgba(0,0,0,0)", bordercolor="#1e2540", borderwidth=1,
+                orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
+    margin=dict(l=10, r=10, t=40, b=10),
+    hoverlabel=dict(bgcolor="#111827", bordercolor="#1e2540", font_family="DM Mono"),
     barmode="stack",
     height=380,
     title=dict(text="", x=0),
-    xaxis=dict(**PLOTLY_LAYOUT["xaxis"], rangeslider=dict(visible=True, thickness=0.04, bgcolor="#0a0d14")),
-    legend=dict(**PLOTLY_LAYOUT["legend"], orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
+    xaxis=dict(gridcolor="#1a2035", linecolor="#1e2540", tickcolor="#1e2540",
+               rangeslider=dict(visible=True, thickness=0.04, bgcolor="#0a0d14")),
 )
 st.plotly_chart(fig, use_container_width=True)
 
@@ -425,11 +432,13 @@ with col_right:
             hovertemplate=f"<b>%{{x}}</b> {name}<br>%{{y:$,.0f}}<extra></extra>"
         ))
     fig_bar.update_layout(
-        **PLOTLY_LAYOUT,
-        barmode="group",
-        height=260,
-        yaxis=dict(**PLOTLY_LAYOUT["yaxis"]),
-        legend=dict(**PLOTLY_LAYOUT["legend"], orientation="h", yanchor="bottom", y=1.02, x=0),
+        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Syne, sans-serif", color="#8892b0", size=12),
+        margin=dict(l=10, r=10, t=40, b=10),
+        barmode="group", height=260,
+        xaxis=dict(gridcolor="#1a2035", linecolor="#1e2540"),
+        yaxis=dict(gridcolor="#1a2035", tickprefix="$"),
+        legend=dict(bgcolor="rgba(0,0,0,0)", orientation="h", yanchor="bottom", y=1.02, x=0),
     )
     st.plotly_chart(fig_bar, use_container_width=True)
 
@@ -463,9 +472,11 @@ with col_a:
         )
     ))
     fig_heat.update_layout(
-        **PLOTLY_LAYOUT,
+        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Syne, sans-serif", color="#8892b0", size=12),
+        margin=dict(l=10, r=10, t=40, b=10),
         height=240,
-        xaxis=dict(**PLOTLY_LAYOUT["xaxis"], tickangle=-45, tickfont=dict(size=10)),
+        xaxis=dict(gridcolor="#1a2035", linecolor="#1e2540", tickangle=-45, tickfont=dict(size=10)),
         yaxis=dict(gridcolor="rgba(0,0,0,0)", linecolor="rgba(0,0,0,0)"),
     )
     st.plotly_chart(fig_heat, use_container_width=True)
@@ -487,9 +498,13 @@ with col_b:
             hovertemplate=f"<b>{tenant}</b><br>%{{y:$,.0f}}<extra></extra>"
         ))
     fig_trend.update_layout(
-        **PLOTLY_LAYOUT,
+        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Syne, sans-serif", color="#8892b0", size=12),
+        margin=dict(l=10, r=10, t=40, b=10),
+        xaxis=dict(gridcolor="#1a2035", linecolor="#1e2540"),
+        yaxis=dict(gridcolor="#1a2035", tickprefix="$"),
         height=240,
-        legend=dict(**PLOTLY_LAYOUT["legend"], orientation="h", y=1.15),
+        legend=dict(bgcolor="rgba(0,0,0,0)", orientation="h", y=1.15),
     )
     st.plotly_chart(fig_trend, use_container_width=True)
 
